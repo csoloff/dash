@@ -1,0 +1,6 @@
+#Sample Average Data
+#--------------------------------------------------------
+#BMI DASH SN:   0
+#BMI SEMS SN: 0
+#--------------------------------------------------------
+#StartTimeSt	EndTimeSt	StartYr	EndYr	StartSecs	EndSecs	Samp_Num	DO_Tot_Cnts	HO_Tot_Cnts	DO_Mode_Val	HO_Mode_Val	UpSt_Dia	UpSt_Sh_Targ	RH_Targ	HO_Rh_Av	HO_Rh_Sdev	HM_RH_Av	HM_Rh_Sdev	DO_Sh_Targ	DO_Sh_Av	DO_Sh_Sdev	DO_Samp_Targ	DO_Samp_Av	DO_Samp_Sdev	HO_Sh_Targ	HO_Sh_Av	HO_Sh_Sdev	HO_Samp_Targ	HO_Samp_Av	HO_Samp_Sdev	HM_Sh_Targ	HM_Sh_Av	HM_Sh_Sdev	HM_Xs_Targ	HM_Xs_Av	HM_Xs_Sdev	Samp_Xs_Targ	Samp_Xs_Av	Samp_Xs_Sdev
