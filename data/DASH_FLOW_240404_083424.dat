@@ -1,6 +1,0 @@
-#DASH Flow Data
-#--------------------------------------------------------
-#BMI DASH SN:   0
-#BMI SEMS SN:   0
-#--------------------------------------------------------
-#DOY.Frac	YYYY	Secs	DO_Sh	DO_Smp	DO_Press	DO_Ht_T	DO_Ht_Pwr	DO_Fl_T	DO_X_T	HO_Sh_D_Fl	HO_Sh	HO_Smp	HO_Press	HO_RH	HO_T	HO_Ht_T	HO_Ht_Pwr	HO_Fl_T	HO_X_T	HO_DP_Cl	HO_DP_Lk	HM_Sh_D_Fl	HM_Sh	HM_Xs	HM_Smp_Xs	HM_Press	HM_RH	HM_T	HM_Ht_T	HM_Ht_Pwr	HM_Fl_T	HM_X_T	HM_DP_Cl	HM_DP_Lk	H2O_T	H2O_Pwr	H2O_Lvl	H2O_Cnt
