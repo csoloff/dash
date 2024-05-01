@@ -56,25 +56,47 @@ def glob_reader(file_key, first_var):
     d = pd.concat(d).reset_index()
     return d
 
-def find_neg_flow(d):
-    
-    below_zero = d[d['UpSt_Samp'] < 0]
+def find_neg_flow(d, t_name = 'untitled'):
+    '''
+    Finds periods of negative flow out of the SEMS inlet
+
+    :param d: pandas DataFrame containing SEMS data
+    :param t_name: name of csv table to save data as
+    :return: pandas DataFrame containing time periods of negative flow
+    '''
+
+    below_zero = d[d['UpSt_Samp'] < 0] # all 'UpSt_Samp' values below zero
 
     start_points = below_zero.index[~(below_zero.index.to_series().diff() == 1)]
     end_points = below_zero.index[~(below_zero.index.to_series().diff(-1) == -1)]
-    #print(start_points)
+    
     # Calculate the duration of each block where the values are below zero
-    durations = d.loc[end_points, 'DOY.Frac'].values - d.loc[start_points, 'DOY.Frac'].values
+    durations = (d.loc[end_points, 'DOY.Frac'].values - d.loc[start_points, 'DOY.Frac'].values)*24*60*60 # units: seconds
 
     # Calculate the total time below zero
     total_time_below_zero = durations.sum()
-    print([d['dt'].iloc[start_points], d['dt'].iloc[end_points], durations])
-    nf_d = pd.DataFrame(data=np.array([d['dt'].iloc[start_points], d['dt'].iloc[end_points], durations]).T, columns=['Start', 'Stop', 'Duration'])
+    
+    print('Total minutes below zero:', round(total_time_below_zero/60, 2))
+
+    nf_d = pd.DataFrame(data={'Start':d['dt'].iloc[start_points].reset_index(drop=True), 'End':d['dt'].iloc[end_points].reset_index(drop=True), 'Start_index':start_points, 'End_index':end_points, 'Duration':pd.Series(durations)})
+
+    nf_d.to_csv('./tables/nf_' + t_name)
 
     return nf_d
+
+def nf_plotter(sems, nf_d):
+    fig, axes = plt.subplots(4, sharex=True)
+
+    axes[0].plot(sems['dt'], sems['UpSt_Samp'], c='black')
+    axes[0].set_ylabel('UpSt_Samp')
+    for i in range(0,4):
+            for j in range(0, len(nf_d)):
+                    axes[i].axvspan(sems['dt'].loc[nf_d.loc[j]['Start_index']], sems['dt'].loc[nf_d.loc[j]['End_index']], color='red', alpha=0.2)
+    
+    plt.show()
 
 sems = glob_reader('SEMS', '#DOY.Frac')
 
 sems_nf = find_neg_flow(sems)
-#test
-print(sems_nf)
+
+nf_plotter(sems, sems_nf)
