@@ -76,5 +76,5 @@ def find_neg_flow(d):
 sems = glob_reader('SEMS', '#DOY.Frac')
 
 sems_nf = find_neg_flow(sems)
-
+#test
 print(sems_nf)
