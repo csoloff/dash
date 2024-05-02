@@ -146,7 +146,7 @@ def run_all_functions(subfolder='./data/', xprt_f_name = 'untitled'):
     nf_plotter(sems, sems_nf, param, dash, f_name=xprt_f_name)
 
 # Calls function to run all other negative flow functions
-# Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder="".
+# Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder=".
 # Specify the name you would like to add at the end of the negative flow table and figure which will be saved
 
 run_all_functions(subfolder='./data/', xprt_f_name = 'demo')
