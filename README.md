@@ -11,4 +11,4 @@ File Structure
 
 Scripts
 
-    "./neg_flow.py" finds instances of negative flow out of the SEMS and saves a table with these times of negative flow, and saves a figure showing the negative flow plotted with RH
+    "./neg_flow.py" finds instances of negative flow out of the SEMS and saves a table with these times of negative flow, and saves a figure showing the negative flow plotted with RH in DASH
