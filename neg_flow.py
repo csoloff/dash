@@ -119,7 +119,7 @@ def nf_plotter(sems, nf_d, param, dash, f_name = 'untitled'):
     axes[2].set_ylabel('HM_RH')
     axes[3].plot(dash['dt'], dash['HO_RH'], c='black')
     axes[3].set_ylabel('HO_RH')
-    axes[3].set_xlabel('MT Time')
+    axes[3].set_xlabel('EST Time')
     axes[3].xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
     fig.tight_layout()
     fig.savefig('./figures/neg_flow_'+f_name+'.png', dpi=300, bbox_inches='tight')
@@ -127,7 +127,7 @@ def nf_plotter(sems, nf_d, param, dash, f_name = 'untitled'):
     plt.show()
 
 
-def run_all_functions(subfolder='./data/', xprt_f_name = 'untitled'):
+def run_all_functions(subfolder='./data/', glob_append = '', xprt_f_name = 'untitled'):
     '''
     Finds negative flows, saves a table of times with negative flows, and plots the negative flow along with RH in DASH
 
@@ -135,13 +135,13 @@ def run_all_functions(subfolder='./data/', xprt_f_name = 'untitled'):
     :param xprt_f_name: the str you would like to append to the table and figure saved
     '''
 
-    sems = glob_reader('SEMS', '#DOY.Frac', subfolder=subfolder)
+    sems = glob_reader('SEMS_DATA'+glob_append, '#DOY.Frac', subfolder=subfolder)
 
     sems_nf = find_neg_flow(sems, t_name=xprt_f_name)
 
-    param = glob_reader('SAMP_PARAM', '#StartTimeSt', subfolder=subfolder)
+    param = glob_reader('SAMP_PARAM'+glob_append, '#StartTimeSt', subfolder=subfolder)
 
-    dash = glob_reader('DASH_FLOW', '#DOY.Frac', subfolder=subfolder)
+    dash = glob_reader('DASH_FLOW'+glob_append, '#DOY.Frac', subfolder=subfolder)
 
     nf_plotter(sems, sems_nf, param, dash, f_name=xprt_f_name)
 
@@ -149,4 +149,4 @@ def run_all_functions(subfolder='./data/', xprt_f_name = 'untitled'):
 # Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder=".
 # Specify the name you would like to add at the end of the negative flow table and figure which will be saved
 
-run_all_functions(subfolder='./data/', xprt_f_name = 'demo')
+run_all_functions(subfolder='./data/DASH_test_240516/', glob_append='_240516_155540', xprt_f_name = '240516')
