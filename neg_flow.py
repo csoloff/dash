@@ -81,7 +81,7 @@ def find_neg_flow(d, t_name = 'untitled'):
 
     nf_d = pd.DataFrame(data={'Start':d['dt'].iloc[start_points].reset_index(drop=True), 'End':d['dt'].iloc[end_points].reset_index(drop=True), 'Start_index':start_points, 'End_index':end_points, 'Duration':pd.Series(durations)})
 
-    nf_d.to_csv('./tables/nf_' + t_name+'.csv')
+    nf_d.to_csv('./tables/nf-' + t_name+'.csv')
 
     return nf_d
 
@@ -122,7 +122,7 @@ def nf_plotter(sems, nf_d, param, dash, f_name = 'untitled'):
     axes[3].set_xlabel('EST Time')
     axes[3].xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
     fig.tight_layout()
-    fig.savefig('./figures/neg_flow_'+f_name+'.png', dpi=300, bbox_inches='tight')
+    fig.savefig('./figures/neg_flow-'+f_name+'.png', dpi=300, bbox_inches='tight')
 
     plt.show()
 
@@ -149,4 +149,4 @@ def run_all_functions(subfolder='./data/', glob_append = '', xprt_f_name = 'unti
 # Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder=".
 # Specify the name you would like to add at the end of the negative flow table and figure which will be saved
 
-run_all_functions(subfolder='./data/DASH_test_240516/', glob_append='_240516_155540', xprt_f_name = '240516')
+run_all_functions(subfolder='./data/DASH-transit_flight-2024_05_17/', xprt_f_name = '2024_05_17')
