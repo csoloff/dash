@@ -79,7 +79,7 @@ def find_neg_flow(d, t_name = 'untitled'):
     
     print('Total minutes below zero:', round(total_time_below_zero/60, 2))
 
-    nf_d = pd.DataFrame(data={'Start':d['dt'].iloc[start_points].reset_index(drop=True), 'End':d['dt'].iloc[end_points].reset_index(drop=True), 'Start_index':start_points, 'End_index':end_points, 'Duration':pd.Series(durations)})
+    nf_d = pd.DataFrame(data={'Start_EST':d['dt'].iloc[start_points].reset_index(drop=True), 'End_EST':d['dt'].iloc[end_points].reset_index(drop=True), 'Start_index':start_points, 'End_index':end_points, 'Duration_s':pd.Series(durations)})
 
     nf_d.to_csv('./tables/nf-' + t_name+'.csv')
 
@@ -149,4 +149,4 @@ def run_all_functions(subfolder='./data/', glob_append = '', xprt_f_name = 'unti
 # Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder=".
 # Specify the name you would like to add at the end of the negative flow table and figure which will be saved
 
-run_all_functions(subfolder='./data/DASH-transit_flight-2024_05_17/', xprt_f_name = '2024_05_17')
+run_all_functions(subfolder='./data/DASH-transit_flight-2024_05_24/', xprt_f_name = '2024_05_24')
