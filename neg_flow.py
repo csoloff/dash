@@ -149,4 +149,4 @@ def run_all_functions(subfolder='./data/', glob_append = '', xprt_f_name = 'unti
 # Put all the data including SEMS, SAMP_PARAM, and DASH_FLOW files in same directory and specify it in the function below after "subfolder=".
 # Specify the name you would like to add at the end of the negative flow table and figure which will be saved
 
-run_all_functions(subfolder='./data/DASH-transit_flight-2024_05_24/', xprt_f_name = '2024_05_24')
+run_all_functions(subfolder='./data/DASH-test_fight-2024_05_17/', xprt_f_name = '2024_05_24')
